@@ -1,0 +1,18 @@
+
+.field-label {
+  transition-duration: 0.1s;
+	font-family: 'Roboto Medium', sans-serif;
+	color: #8e8686;
+}
+
+.field-label.up {
+	transform: translate(0, -25px);
+	font-size: 13px;
+	font-family: 'Roboto Light', sans-serif;
+}
+
+.field-label.outlined.up {
+	transform: translate(3px, -16px);
+	font-size: 13px;
+	font-family: 'Roboto Light', sans-serif;
+}

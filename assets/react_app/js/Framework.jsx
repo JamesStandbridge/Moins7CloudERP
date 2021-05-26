@@ -1,20 +1,42 @@
-import React from 'react';
-import { Provider } from 'react-redux';
-import Store from './store/configureStore';
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import { Provider } from 'react-redux'
 import Router from './Router'
 
-import Theme from './Theme';
+import Layout from './components/layout/AbstractLayout'
 
-const Framework = (props) => {
+import TokenManager from './services/security/TokenManager'
+import Theme from './Theme'
+
+import Login from './pages/single/Login'
+
+const Framework = ({SessionHandler, dispatch}) => {
+
+	const handleDisconnect = () => {
+		dispatch({type: "session:disconnect"})
+	}
+
 	return (
 		<>
-			<Provider store={ Store }>
-				<Theme>
-					<Router />
-				</Theme>
-			</Provider>
+			<Theme>
+				{TokenManager.isConnected(SessionHandler.token) ? (
+					<Layout 
+						role={TokenManager.getRole(SessionHandler.token)} 
+						token={SessionHandler.token}
+						onDisconnect={handleDisconnect}
+					>
+						<Router />
+					</Layout>
+				) : (
+					<Login />
+				)}
+			</Theme>
 		</>
 	)
 }
 
-export default Framework;
+const mapStateToProps = (state) => {
+	return state
+}
+
+export default connect(mapStateToProps)(Framework);

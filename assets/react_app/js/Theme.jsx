@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import GlobalFonts from './style/fonts/fonts'
 
 import BaseTheme from './style/themes/BaseTheme'
@@ -6,6 +6,12 @@ import BaseTheme from './style/themes/BaseTheme'
 import { ThemeProvider } from 'styled-components'
 
 const Theme = ({children}) => {
+
+	useEffect(() => {
+		document.body.style.backgroundColor = "white"
+		//document.body.style.backgroundColor = "grey"
+	})
+
 	return (
 		<ThemeProvider theme={BaseTheme}>
 			<GlobalFonts />

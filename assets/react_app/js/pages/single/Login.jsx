@@ -5,9 +5,9 @@ import LoginForm from '../../components/form/security/LoginForm'
 const Login = (props) => {
 
 	return (
-		<div>
+		<>
 			<LoginForm />
-		</div>
+		</>
 	)
 }
 

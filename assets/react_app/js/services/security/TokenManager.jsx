@@ -49,7 +49,7 @@ const TokenHandler = {
 	},
 
 	isConnected: function(token) {
-		if(token === "" || token === null)  {
+		if(token === "" || token === null || TokenHandler.isExpired(token))  {
 			return false
 		} else {
 			const decoded_token = jwt_decode(token);

@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
+import React, { useState, useEffect } from "react"
+import { Provider } from 'react-redux'
+import ReactDOM from "react-dom"
+
+import Store from './store/configureStore'
 
 import Framework from './Framework'
 
 const App = () => {
 	return (
-		<Framework />
+		<Provider store={ Store }>
+			<Framework />
+		</Provider>
 	);	
 }
 

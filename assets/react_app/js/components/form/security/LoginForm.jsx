@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
+import styled from 'styled-components'
 
 import TextField from '../../elements/inputs/TextField'
 import FormControl from '../../elements/inputs/FormControl'
 
 import Button from '../../elements/buttons/Button'
 
-const LoginForm = (props) => {
+import R_Security from "../../../API/repository/R_Security"
+
+const LoginForm = ({SessionHandler, dispatch}) => {
 	const [ credentials, setCredentials ] = useState({
 		username: "",
 		password: ""
@@ -19,19 +22,24 @@ const LoginForm = (props) => {
 		})
 	}
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault()
-		console.log("submit")
+		const res = await R_Security.login(credentials)
+		if(res.status === 200) {
+			const token = res.data.token
+			dispatch({type: "session:authenticate", token})
+		}
 	}
 
 	return (
-		<Form>
+		<Form autoComplete="off">
 			<FormControl width={25}>
 				<TextField
 					onChange={handleChange}
 					value={credentials.username}
 					name="username"
 					label="Nom d'utilisateur"
+					autoComplete="off"
 				/>
 			</FormControl>
 
@@ -42,6 +50,7 @@ const LoginForm = (props) => {
 					name="password"
 					label="Mot de passe"
 					type="password"
+					autoComplete="off"
 				/>
 			</FormControl>
 
@@ -54,7 +63,11 @@ const LoginForm = (props) => {
 	)
 }
 
-export default LoginForm;
+const mapStateToProps = (state) => {
+	return state
+}
+
+export default connect(mapStateToProps)(LoginForm);
 
 const Footer = styled.div`
 	margin-top: 50px;

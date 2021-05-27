@@ -5,6 +5,8 @@ import BaseTheme from './style/themes/BaseTheme'
 
 import { ThemeProvider } from 'styled-components'
 
+require("./style/css/BaseTheme.css")
+
 const Theme = ({children}) => {
 
 	useEffect(() => {

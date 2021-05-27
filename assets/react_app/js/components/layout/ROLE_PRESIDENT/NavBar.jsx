@@ -1,74 +1,101 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import LogoImg from '../../../../img/app/logo_text.png'
-import IconButton from '@material-ui/core/IconButton';
+import { Link } from 'react-router-dom'
+
+import LogoImg from '../../../../img/app/logo_simple.png'
+import IconButton from '@material-ui/core/IconButton'
+
+import AbstractTab from '../AbstractTab'
 
 import PeopleIcon from '@material-ui/icons/People'
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance'
 import WidgetsIcon from '@material-ui/icons/Widgets'
 import EqualizerIcon from '@material-ui/icons/Equalizer'
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday'
-import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
+import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew'
 
-const logoStyle = {
-	width: "144px"
-}
-
-const menuItemStyle = {width: "40px", height: "40px"}
-
-const NavBar = ({onDisconnect}) => {
+const NavBar = ({onDisconnect, onSwitchTab, tab}) => {
 	return (
 		<>
 			<Menu>
-				<MenuItem>
-					<IconButton style={{padding: 0}}>
-						<WidgetsIcon style={menuItemStyle} />
-					</IconButton>
-				</MenuItem>
-				<MenuItem>
-					<IconButton style={{padding: 0}}>
-						<AccountBalanceIcon style={menuItemStyle} />
-					</IconButton>
-				</MenuItem>
-				<MenuItem>
-					<IconButton style={{padding: 0}}>
-						<PeopleIcon style={menuItemStyle} />
-					</IconButton>
-				</MenuItem>
-				<MenuItem>
-					<IconButton style={{padding: 0}}>
-						<EqualizerIcon style={menuItemStyle} />
-					</IconButton>
-				</MenuItem>
-				<MenuItem>
-					<IconButton style={{padding: 0}}>
-						<CalendarTodayIcon style={menuItemStyle} />
-					</IconButton>
-				</MenuItem>
-
-				<MenuFooter>
+				<Link to={"/dashboard"} style={{textDecoration: "none"}}>
 					<MenuItem>
-						<IconButton onClick={onDisconnect} style={{padding: 0}}>
-							<PowerSettingsNewIcon style={menuItemStyle} />
-						</IconButton>
+						<img src={LogoImg}/>
+					</MenuItem>
+				</Link>
+				<Link to={"/dashboard"} style={{textDecoration: "none"}}>
+					<MenuItem onClick={() => onSwitchTab("Dashboard", "Dashboard")} selected={tab === "Dashboard"}> 
+						<WidgetsIcon />
+					</MenuItem>
+				</Link>
+				<Link to={"/dashboard"} style={{textDecoration: "none"}}>
+					<MenuItem onClick={() => onSwitchTab("Loges", "Loges")} selected={tab === "Loges"}>
+						<AccountBalanceIcon />
+					</MenuItem>
+				</Link>
+				<Link to={"/dashboard"} style={{textDecoration: "none"}}>
+					<MenuItem onClick={() => onSwitchTab("Membres", "Membres")} selected={tab === "Membres"}>
+						<PeopleIcon />
+					</MenuItem>
+				</Link>
+				<Link to={"/dashboard"} style={{textDecoration: "none"}}>
+					<MenuItem onClick={() => onSwitchTab("Statistiques", "Statistiques")} selected={tab === "Statistiques"}>
+						<EqualizerIcon />
+					</MenuItem>
+				</Link>
+				<Link to={"/dashboard"} style={{textDecoration: "none"}}>
+					<MenuItem onClick={() => onSwitchTab("Calendrier", "Calendrier")} selected={tab === "Calendrier"}>
+						<CalendarTodayIcon />
+					</MenuItem>
+				</Link>
+				<MenuFooter>
+					<MenuItem onClick={onDisconnect} selected={false}>
+						<PowerSettingsNewIcon />
 					</MenuItem>
 				</MenuFooter>
-			</Menu>
-			<Navigation />
+			</Menu>	
+
+
+			<Navigation>
+				<AbstractTab />
+			</Navigation>
 		</>
 	)
 }
 
 export default NavBar
 
+
+
 const MenuFooter = styled.div`
     position: absolute;
-    top: 94vh;
+    top: 91vh;
 `
 
 const MenuItem = styled.div`
-    margin-bottom: 30px;
+	width: 80px;
+    height: 80px;
+	display: flex;
+	justify-content: center;
+	align-items: center; 
+	cursor: pointer;
+	transition: border-left-width 0.1s ease-in, padding-right 0.1s ease-in, color 0.1s ease-in, opacity 0.1s ease-in;
+	border-left: ${props => props.selected ? "solid 4px " + props.theme.success : "none"};
+	& > img {
+		width: 61px;
+	};
+	& > svg {
+		width: 40px;
+		height: 40px;
+		color: ${props => props.selected ? props.theme.success : props.theme.typo};		
+	}
+	&:hover {
+		border-left: solid 4px ${props => props.theme.success};
+	};
+	&:hover > svg {
+		color: ${props => props.theme.success};
+	}
 `
 
 const Icon = styled.div`
@@ -88,7 +115,7 @@ const Logo = styled.div`
 const Navigation = styled.div`
     background-color: #f5efef;
     position: fixed;
-    left: 72px;
+    left: 81px;
     top: 0;
     width: 250px;
     height: 100vh;
@@ -101,8 +128,7 @@ const Menu = styled.div`
 	position: fixed;
 	left: 0;
 	top: 0;
-	width: 40px;
+	width: 80px;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 	height: 100vh;
-	padding: 15px;
 `

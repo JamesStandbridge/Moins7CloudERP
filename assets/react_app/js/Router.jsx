@@ -7,9 +7,10 @@ import { HashRouter, Route, Switch, Redirect, BrowserRouter } from "react-router
 
 import Dashboard from "./pages/admin/Dashboard";
 
-const Router = ({AuthHandler, dispatch}) => {
+const Router = ({AuthHandler, dispatch, children}) => {
 	return (
 		<BrowserRouter>
+			{children}
 			<Switch>
 				<Route path="/" component={Dashboard} />
 			</Switch>

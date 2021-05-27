@@ -20,13 +20,16 @@ const Framework = ({SessionHandler, dispatch}) => {
 		<>
 			<Theme>
 				{TokenManager.isConnected(SessionHandler.token) ? (
-					<Layout 
-						role={TokenManager.getRole(SessionHandler.token)} 
-						token={SessionHandler.token}
-						onDisconnect={handleDisconnect}
-					>
-						<Router />
-					</Layout>
+					<Router>
+						<Layout 
+							role={TokenManager.getRole(SessionHandler.token)} 
+							token={SessionHandler.token}
+							onDisconnect={handleDisconnect}
+						>
+							
+						</Layout>
+					</Router>
+
 				) : (
 					<Login />
 				)}

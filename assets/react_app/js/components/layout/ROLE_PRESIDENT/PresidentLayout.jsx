@@ -4,11 +4,14 @@ import styled from 'styled-components'
 import AppBar from './AppBar'
 import NavBar from './NavBar'
 
-const PresidentLayout = ({children, onDisconnect}) => {
+const PresidentLayout = ({children, onDisconnect, onSwitchTab, tab}) => {
 	return (
-		<Container>
-			
-			<NavBar onDisconnect={onDisconnect} />
+		<Container className="noselect">
+			<NavBar
+				onDisconnect={onDisconnect} 
+				tab={tab} 
+				onSwitchTab={onSwitchTab}
+			/>
 			{children}
 		</Container>
 	)

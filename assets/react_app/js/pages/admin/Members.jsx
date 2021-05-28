@@ -4,11 +4,13 @@ import { connect } from 'react-redux'
 import PageTemplate from './PageTemplate'
 
 import MemberTable from '../../components/table/MemberTable'
+import MemberModalForm from '../../components/form/admin/member/MemberModalForm'
 
 import R_Member from '../../API/repository/R_Member'
 
 import Button from '../../components/elements/buttons/ActionButton'
 import AddIcon from '@material-ui/icons/Add'
+
 
 const Members = ({SessionHandler}) => {
 	const [ members, setMembers ] = useState([])
@@ -31,7 +33,8 @@ const Members = ({SessionHandler}) => {
 			<Container>
 				<TableHeader>
 					<TableCount>{`${members.length} membre${members.length > 1?'s':''}`}</TableCount>
-					<Button Icon={AddIcon} >Nouveau</Button>
+					<MemberModalForm />
+					
 				</TableHeader>
 
 				<MemberTable members={members} loading={loading} />

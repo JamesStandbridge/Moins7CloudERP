@@ -1,15 +1,15 @@
 import React from 'react'
-
 import styled from 'styled-components'
 
-import AddIcon from '@material-ui/icons/Add'
-
-const ActionButton = ({children, Icon, color = null, fontColor = null}) => {
+const ActionButton = ({onClick, children, Icon = null, color = null, fontColor = null, style = {}}) => {
 	return (
-		<Container color={color} fontColor={fontColor}>
-			<IconContainer>
-				<Icon />
-			</IconContainer>
+		<Container style={style} className="noselect" onClick={onClick} color={color} fontColor={fontColor}>
+			{Icon !== null ? (
+				<IconContainer>
+					<Icon />
+				</IconContainer>
+			) : (null)}
+
 			
 			<Title>{children}</Title>
 		</Container>

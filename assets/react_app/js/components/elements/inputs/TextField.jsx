@@ -45,7 +45,7 @@ const Container = styled.div`
 `
 
 const Label = styled.div`
-    font-size: 18px;
+    font-size: 16px;
     position: absolute;
     top: 28px;
     z-index: 1;
@@ -58,7 +58,7 @@ const Input = styled.input`
     position: absolute;
     top: 20px;
     height: 30px;
-    font-size: 18px;
+    font-size: 16px;
     border: none;
     outline: none;
     border-bottom: 1px solid ${props => props.theme.typo};

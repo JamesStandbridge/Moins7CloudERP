@@ -33,7 +33,7 @@ const LoginForm = ({SessionHandler, dispatch}) => {
 
 	return (
 		<Form autoComplete="off">
-			<FormControl width={25}>
+			<FormControl width={25} center={true}>
 				<TextField
 					onChange={handleChange}
 					value={credentials.username}
@@ -43,7 +43,7 @@ const LoginForm = ({SessionHandler, dispatch}) => {
 				/>
 			</FormControl>
 
-			<FormControl width={25}>
+			<FormControl width={25} center={true}>
 				<TextField
 					onChange={handleChange}
 					value={credentials.password}
@@ -55,7 +55,7 @@ const LoginForm = ({SessionHandler, dispatch}) => {
 			</FormControl>
 
 			<Footer>
-				<FormControl width={25}>
+				<FormControl width={25} center={true}>
 					<Button type="submit" title="CONNEXION" onClick={(e) => handleSubmit(e)}/>
 				</FormControl>
 			</Footer>

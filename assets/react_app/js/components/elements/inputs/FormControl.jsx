@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 
 
-const FormControl = ({children, width}) => {
+const FormControl = ({children, width, center = false}) => {
 	return (
-		<Container width={width}>
+		<Container width={width} center={center}>
 			{children}
 		</Container>
 	)
@@ -16,5 +16,5 @@ const Container = styled.div`
 	padding: 10px 30px;
 	min-width: 250px;
 	width: ${props => props.width}%;
-	margin: 0 auto;
+	margin: ${props => props.center ? "0 auto" : "0"};
 `

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Provider } from 'react-redux'
 import Router from './Router'
 
-import Layout from './components/layout/AbstractLayout'
+
 
 import TokenManager from './services/security/TokenManager'
 import Theme from './Theme'
@@ -20,14 +20,7 @@ const Framework = ({SessionHandler, dispatch}) => {
 		<>
 			<Theme>
 				{TokenManager.isConnected(SessionHandler.token) ? (
-					<Router>
-						<Layout 
-							role={TokenManager.getRole(SessionHandler.token)} 
-							token={SessionHandler.token}
-							onDisconnect={handleDisconnect}
-						>
-							
-						</Layout>
+					<Router onDisconnect={handleDisconnect}>
 					</Router>
 
 				) : (

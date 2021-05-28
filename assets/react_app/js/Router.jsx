@@ -1,19 +1,28 @@
-import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
-import { connect } from 'react-redux';
+import React, { useState, useEffect } from "react"
+import ReactDOM from "react-dom"
+import { connect } from 'react-redux'
 
-import { HashRouter, Route, Switch, Redirect, BrowserRouter } from "react-router-dom";
+import { HashRouter, Route, Switch, Redirect, BrowserRouter } from "react-router-dom"
 
+import Layout from './components/layout/AbstractLayout'
+import TokenManager from './services/security/TokenManager'
 
-import Dashboard from "./pages/admin/Dashboard";
+import Dashboard from "./pages/admin/Dashboard"
+import Members from "./pages/admin/Members"
 
-const Router = ({AuthHandler, dispatch, children}) => {
+const Router = ({AuthHandler, SessionHandler, dispatch, children, onDisconnect}) => {
 	return (
 		<BrowserRouter>
-			{children}
-			<Switch>
-				<Route path="/" component={Dashboard} />
-			</Switch>
+			<Layout 
+				role={TokenManager.getRole(SessionHandler.token)} 
+				token={SessionHandler.token}
+				onDisconnect={onDisconnect}
+			>
+				<Switch>
+					<Route path="/adherents" component={Members} />
+					<Route path="/" component={Dashboard} />
+				</Switch>
+			</Layout>
 		</BrowserRouter>
 	);
 }

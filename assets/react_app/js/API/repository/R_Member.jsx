@@ -4,18 +4,9 @@ import HeaderBuilder from "../helpers/HeaderBuilder"
 import EndPoints from "../helpers/EndPoints"
 
 const R_Security = {
-	login: async function(credentials) {
-		const res = await HttpService.sendPostRequest(
-			EndPoints.URL_LOGIN, 
-			HeaderBuilder.POST_HEADER(),
-			credentials
-		)
-		return res
-	},
-
-	getUser: async function(token) {
+	getAll: async function(token) {
 		const res = await HttpService.sendGetRequest(
-			EndPoints.URL_GET_USER,
+			EndPoints.URL_GET_MEMBERS,
 			HeaderBuilder.GET_HEADER_AUTHORIZATION(token)
 		)
 		return res

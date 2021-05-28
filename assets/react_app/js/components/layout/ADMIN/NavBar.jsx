@@ -18,24 +18,24 @@ import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew'
 const NavBar = ({onDisconnect, onSwitchTab, tab}) => {
 	return (
 		<>
-			<Menu>
-				<Link to={"/dashboard"} style={{textDecoration: "none"}}>
+			<Menu className="noselect"> 
+				<a href="https://www.moins7.com" target="_blank">
 					<MenuItem>
 						<img src={LogoImg}/>
 					</MenuItem>
-				</Link>
+				</a>
 				<Link to={"/dashboard"} style={{textDecoration: "none"}}>
 					<MenuItem onClick={() => onSwitchTab("Dashboard", "Dashboard")} selected={tab === "Dashboard"}> 
 						<WidgetsIcon />
 					</MenuItem>
 				</Link>
-				<Link to={"/dashboard"} style={{textDecoration: "none"}}>
-					<MenuItem onClick={() => onSwitchTab("Loges", "Loges")} selected={tab === "Loges"}>
+				<Link to={"/loges"} style={{textDecoration: "none"}}>
+					<MenuItem onClick={() => onSwitchTab("Loges", "Toutes les loges")} selected={tab === "Loges"}>
 						<AccountBalanceIcon />
 					</MenuItem>
 				</Link>
-				<Link to={"/dashboard"} style={{textDecoration: "none"}}>
-					<MenuItem onClick={() => onSwitchTab("Membres", "Membres")} selected={tab === "Membres"}>
+				<Link to={"/adherents"} style={{textDecoration: "none"}}>
+					<MenuItem onClick={() => onSwitchTab("Membres", "Adhérents")} selected={tab === "Membres"}>
 						<PeopleIcon />
 					</MenuItem>
 				</Link>

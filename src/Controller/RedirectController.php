@@ -38,4 +38,36 @@ class RedirectController extends AbstractController
     {
         return $this->render('react_app/appEntryPoint.html.twig');
     }
+
+    /**
+     * @Route("/dashboard", name="dashboard")
+     */
+    public function dashboard(): Response
+    {
+        return $this->render('react_app/appEntryPoint.html.twig');
+    }
+
+    /**
+     * @Route("/adherents", name="members")
+     */
+    public function members(): Response
+    {
+        return $this->render('react_app/appEntryPoint.html.twig');
+    }
+
+    /**
+     * @Route("/loges", name="loges")
+     */
+    public function loges(): Response
+    {
+        return $this->render('react_app/appEntryPoint.html.twig');
+    }
+
+    /**
+     * @Route("/aide", name="aide")
+     */
+    public function aide(): Response
+    {
+        return $this->render('react_app/appEntryPoint.html.twig');
+    }
 }

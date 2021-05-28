@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import PresidentLayout from './ROLE_PRESIDENT/PresidentLayout'
+import TokenManager from '../../services/security/TokenManager'
+import AdminLayout from './ADMIN/AdminLayout'
 
 const AbstractLayout = ({children, token, role, onDisconnect, dispatch, NavigationHandler}) => {
 
@@ -9,18 +10,22 @@ const AbstractLayout = ({children, token, role, onDisconnect, dispatch, Navigati
 		dispatch({type: "navigation:tab:change", tab, subTab})
 	}
 
-	if(role === "ROLE_PRESIDENT") {
+	const user = TokenManager.getUser(token)
+
+	if(role === "ROLE_PRESIDENT" || role === "ROLE_ADMIN" || role === "ROLE_DIRECTOR") {
+
 		return (
-			<PresidentLayout 
+			<AdminLayout 
 				onDisconnect={onDisconnect} 
 				onSwitchTab={handleSwitchTab} 
 				tab={NavigationHandler.currentTab}
+				user={user}
 			>
 				{children}
-			</PresidentLayout>
+			</AdminLayout>
 		)
 	} else {
-		return (children)
+		return (<>{children}</>)
 	}
 }
 

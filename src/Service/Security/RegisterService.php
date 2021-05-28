@@ -51,6 +51,18 @@ class RegisterService extends AbstractService {
         } else {
             throw new \MissingParameterException(sprintf("password field is required"));
         }  
+
+        if(array_key_exists("civility", $memberData)) {
+            $member->setCivility($memberData["civility"]);
+        } else {
+            throw new \MissingParameterException(sprintf("civility field is required"));
+        }  
+
+        if(array_key_exists("phoneNumber", $memberData)) {
+            $member->setPhoneNumber($memberData["phoneNumber"]);
+        } else {
+            throw new \MissingParameterException(sprintf("phoneNumber field is required"));
+        }  
         
         $member->setEnabled(true);
         

@@ -1,18 +1,18 @@
-import React from "react";
-import jwt_decode from "jwt-decode";
+import React from "react"
+import jwt_decode from "jwt-decode"
 
 const TokenHandler = {
     decode: function(token) {
-    	const decoded_token = jwt_decode(token);
-    	return decoded_token;
+    	const decoded_token = jwt_decode(token)
+    	return decoded_token
 	},
 
 	isPresident: function(token) {
 		if(token === "" || token === null) {
 			return false
 		} else {
-			const decoded_token = jwt_decode(token);
-			return decoded_token.roles.includes('ROLE_PRESIDENT');
+			const decoded_token = jwt_decode(token)
+			return decoded_token.roles.includes('ROLE_PRESIDENT')
 		}
 	},
 
@@ -20,8 +20,8 @@ const TokenHandler = {
 		if(token === "" || token === null)  {
 			return false
 		} else {
-			const decoded_token = jwt_decode(token);
-			return decoded_token.roles.includes('ROLE_ADMIN');
+			const decoded_token = jwt_decode(token)
+			return decoded_token.roles.includes('ROLE_ADMIN')
 		}
 	},
 
@@ -29,14 +29,14 @@ const TokenHandler = {
 		if(token === "" || token === null)  {
 			return false
 		} else {
-			const decoded_token = jwt_decode(token);
-			return decoded_token.roles.includes('ROLE_DIRECTOR');
+			const decoded_token = jwt_decode(token)
+			return decoded_token.roles.includes('ROLE_DIRECTOR')
 		}
 	},
 
 	getRole: function(token) {
 		const decoded_token = jwt_decode(token)
-		const roles = decoded_token.roles;
+		const roles = decoded_token.roles
 		if(roles.includes('ROLE_PRESIDENT')) return 'ROLE_PRESIDENT'
 		if(roles.includes('ROLE_DIRECTOR')) return 'ROLE_DIRECTOR'
 		if(roles.includes('ROLE_ADMIN')) return 'ROLE_ADMIN'
@@ -44,7 +44,7 @@ const TokenHandler = {
 	},
 
 	isExpired: function(token) {
-		const current_time = new Date().getTime() / 1000;
+		const current_time = new Date().getTime() / 1000
 		return current_time > jwt_decode(token).exp
 	},
 
@@ -57,12 +57,23 @@ const TokenHandler = {
 				decoded_token.roles.includes('ROLE_TIER') ||
 				decoded_token.roles.includes('ROLE_OPERATOR') ||
 				decoded_token.roles.includes('ROLE_ADMIN') ||
-				decoded_token.roles.includes('ROLE_SUPER_ADMIN');
-			return bool;
+				decoded_token.roles.includes('ROLE_SUPER_ADMIN')
+			return bool
 				
 		}		
+	},
+
+	getUser: function(token) {
+		const decoded_token = jwt_decode(token)
+		return {
+			firstname: decoded_token.firstname,
+			lastname: decoded_token.lastname,
+			email: decoded_token.email,
+			username: decoded_token.username,
+			ip: decoded_token.ip
+		}
 	}
 };
 
-export default TokenHandler;
+export default TokenHandler
 

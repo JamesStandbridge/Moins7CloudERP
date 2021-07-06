@@ -10,7 +10,8 @@ const TextField = ({
 	label,
 	placeholder,
 	variant,
-	type
+	type,
+	isRequired = false
 }) => {
 	const [ isFocused, focus] = useState(false)
 
@@ -22,6 +23,9 @@ const TextField = ({
 				className={isFocused || value.length !== 0 ? `field-label up` : "field-label"}
 			>
 				{label}
+				{isRequired ? (
+					<Required>*</Required>
+				) : (null)}
 			</Label>
 			<Input
 				value={value}
@@ -38,6 +42,11 @@ const TextField = ({
 
 export default TextField;
 
+const Required = styled.div`
+	margin-left: 5px;
+	color: ${props => props.theme.danger};
+`
+
 const Container = styled.div`
 	position: relative;
 	width: 100%;
@@ -51,6 +60,7 @@ const Label = styled.div`
     z-index: 1;
     color: ${props => props.isFocused ? props.theme.info : props.theme.placeholder};
     pointer-events: none;
+    display: flex;
 `
 
 const Input = styled.input`

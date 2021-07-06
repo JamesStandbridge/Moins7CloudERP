@@ -5,6 +5,7 @@ import Button from '../../../elements/buttons/ActionButton'
 import ConfirmButton from '../../../elements/buttons/ConfirmButton'
 import CancelButton from '../../../elements/buttons/CancelButton'
 
+import Accordeon from '../../../elements/layout/Accordeon'
 import TextField from '../../../elements/inputs/TextField'
 import FormControl from '../../../elements/inputs/FormControl'
 
@@ -35,16 +36,16 @@ const MemberModalForm = (props) => {
 
 	const [ open, setOpen ] = useState(true)
 	const [ member, setMember ] = useState({
-		firstname: {value: "", error: ""},
-		lastname: {value: "", error: ""},
-		email: {value: "", error: ""},
-		civility: {value: "", error: ""},
-		phoneNumber: {value: "", error: ""},
-		password: {value: "", error: ""},
-		street: {value: "", error: ""},
-		city: {value: "", error: ""},
-		zipcode: {value: "", error: ""},
-		country: {value: "", error: ""}
+		firstname: {value: "", error: "", isRequired: true},
+		lastname: {value: "", error: "", isRequired: true},
+		email: {value: "", error: "", isRequired: true},
+		civility: {value: "", error: "", isRequired: true},
+		phoneNumber: {value: "", error: "", isRequired: true},
+		password: {value: "", error: "", isRequired: true},
+		street: {value: "", error: "", isRequired: false},
+		city: {value: "", error: "", isRequired: false},
+		zipcode: {value: "", error: "", isRequired: false},
+		country: {value: "", error: "", isRequired: true}
 	})
 
 	const handleChange = ({currentTarget}) => {
@@ -56,16 +57,16 @@ const MemberModalForm = (props) => {
 	const handleCancel = () => {
 		setOpen(false)
 		setMember({
-			firstname: {value: "", error: ""},
-			lastname: {value: "", error: ""},
-			email: {value: "", error: ""},
-			civility: {value: "", error: ""},
-			phoneNumber: {value: "", error: ""},
-			password: {value: "", error: ""},
-			street: {value: "", error: ""},
-			city: {value: "", error: ""},
-			zipcode: {value: "", error: ""},
-			country: {value: "", error: ""}
+			firstname: {value: "", error: "", isRequired: true},
+			lastname: {value: "", error: "", isRequired: true},
+			email: {value: "", error: "", isRequired: true},
+			civility: {value: "", error: "", isRequired: true},
+			phoneNumber: {value: "", error: "", isRequired: true},
+			password: {value: "", error: "", isRequired: true},
+			street: {value: "", error: "", isRequired: false},
+			city: {value: "", error: "", isRequired: false},
+			zipcode: {value: "", error: "", isRequired: false},
+			country: {value: "", error: "", isRequired: true}
 		})
 	}
 
@@ -97,8 +98,12 @@ const MemberModalForm = (props) => {
 
 						<ModalBody>
 							<FormPart>
+								<Accordeon title={"Informations générales"}>
+									<h4>{"test"}</h4>
+								</Accordeon>
 								<FormControl width={25}>
 									<TextField
+										isRequired={member.firstname.isRequired}
 										onChange={handleChange}
 										value={member.firstname.value}
 										name="firstname"
@@ -106,9 +111,9 @@ const MemberModalForm = (props) => {
 										autoComplete="off"
 									/>
 								</FormControl>
-
 								<FormControl width={25}>
 									<TextField
+										isRequired={member.lastname.isRequired}
 										onChange={handleChange}
 										value={member.lastname.value}
 										name="lastname"
@@ -116,9 +121,9 @@ const MemberModalForm = (props) => {
 										autoComplete="off"
 									/>
 								</FormControl>
-
 								<FormControl width={25}>
 									<TextField
+										isRequired={member.email.isRequired}
 										onChange={handleChange}
 										value={member.email.value}
 										name="email"
@@ -126,9 +131,9 @@ const MemberModalForm = (props) => {
 										autoComplete="off"
 									/>
 								</FormControl>
-
 								<FormControl width={25}>
 									<TextField
+										isRequired={member.phoneNumber.isRequired}
 										onChange={handleChange}
 										value={member.phoneNumber.value}
 										name="phoneNumber"
@@ -136,9 +141,9 @@ const MemberModalForm = (props) => {
 										autoComplete="off"
 									/>
 								</FormControl>
-
 								<FormControl width={25}>
 									<TextField
+										isRequired={member.street.isRequired}
 										onChange={handleChange}
 										value={member.street.value}
 										name="street"
@@ -148,6 +153,7 @@ const MemberModalForm = (props) => {
 								</FormControl>
 								<FormControl width={25}>
 									<TextField
+										isRequired={member.city.isRequired}
 										onChange={handleChange}
 										value={member.city.value}
 										name="city"
@@ -157,6 +163,7 @@ const MemberModalForm = (props) => {
 								</FormControl>
 								<FormControl width={25}>
 									<TextField
+										isRequired={member.zipcode.isRequired}
 										onChange={handleChange}
 										value={member.zipcode.value}
 										name="zipcode"
@@ -164,9 +171,9 @@ const MemberModalForm = (props) => {
 										autoComplete="off"
 									/>
 								</FormControl>
-
 								<FormControl width={25}>
 									<TextField
+										isRequired={member.country.isRequired}
 										onChange={handleChange}
 										value={member.country.value}
 										name="country"
@@ -219,6 +226,7 @@ const ModalTitle = styled.h3`
 	margin: 0;
 	font-family: "Roboto Light", sans serif;
 	font-weight: bold;
+	font-size: 20px;
 `
 
 const ModalHeader = styled.div`

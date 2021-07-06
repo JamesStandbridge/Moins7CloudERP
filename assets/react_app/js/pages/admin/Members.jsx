@@ -9,7 +9,6 @@ import MemberModalForm from '../../components/form/admin/member/MemberModalForm'
 import R_Member from '../../API/repository/R_Member'
 
 import Button from '../../components/elements/buttons/ActionButton'
-import AddIcon from '@material-ui/icons/Add'
 
 
 const Members = ({SessionHandler}) => {

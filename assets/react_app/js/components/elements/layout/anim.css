@@ -1,0 +1,13 @@
+.accordeon {
+	
+}
+
+.accordeon-content {
+	display: none;
+	transition: all 1s ease-out;
+}
+
+.accordeon-content.expanded {
+	display: block;
+	transition: all 1s ease-out;
+}

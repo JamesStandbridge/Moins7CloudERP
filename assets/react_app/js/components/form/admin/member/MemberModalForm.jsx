@@ -97,91 +97,96 @@ const MemberModalForm = (props) => {
 						</ModalHeader>
 
 						<ModalBody>
-							<FormPart>
 								<Accordeon title={"Informations générales"}>
-									<h4>{"test"}</h4>
+									<FormPart>
+									<FormControl width={25}>
+										<TextField
+											isRequired={member.firstname.isRequired}
+											onChange={handleChange}
+											value={member.firstname.value}
+											name="firstname"
+											label="Prénom"
+											autoComplete="off"
+										/>
+									</FormControl>
+									<FormControl width={25}>
+										<TextField
+											isRequired={member.lastname.isRequired}
+											onChange={handleChange}
+											value={member.lastname.value}
+											name="lastname"
+											label="Nom de famille"
+											autoComplete="off"
+										/>
+									</FormControl>
+									<FormControl width={25}>
+										<TextField
+											isRequired={member.email.isRequired}
+											onChange={handleChange}
+											value={member.email.value}
+											name="email"
+											label="Email"
+											autoComplete="off"
+										/>
+									</FormControl>
+									<FormControl width={25}>
+										<TextField
+											isRequired={member.phoneNumber.isRequired}
+											onChange={handleChange}
+											value={member.phoneNumber.value}
+											name="phoneNumber"
+											label="Numéro de téléphone"
+											autoComplete="off"
+										/>
+									</FormControl>
+									</FormPart>
 								</Accordeon>
-								<FormControl width={25}>
-									<TextField
-										isRequired={member.firstname.isRequired}
-										onChange={handleChange}
-										value={member.firstname.value}
-										name="firstname"
-										label="Prénom"
-										autoComplete="off"
-									/>
-								</FormControl>
-								<FormControl width={25}>
-									<TextField
-										isRequired={member.lastname.isRequired}
-										onChange={handleChange}
-										value={member.lastname.value}
-										name="lastname"
-										label="Nom de famille"
-										autoComplete="off"
-									/>
-								</FormControl>
-								<FormControl width={25}>
-									<TextField
-										isRequired={member.email.isRequired}
-										onChange={handleChange}
-										value={member.email.value}
-										name="email"
-										label="Email"
-										autoComplete="off"
-									/>
-								</FormControl>
-								<FormControl width={25}>
-									<TextField
-										isRequired={member.phoneNumber.isRequired}
-										onChange={handleChange}
-										value={member.phoneNumber.value}
-										name="phoneNumber"
-										label="Numéro de téléphone"
-										autoComplete="off"
-									/>
-								</FormControl>
-								<FormControl width={25}>
-									<TextField
-										isRequired={member.street.isRequired}
-										onChange={handleChange}
-										value={member.street.value}
-										name="street"
-										label="Voie"
-										autoComplete="off"
-									/>
-								</FormControl>
-								<FormControl width={25}>
-									<TextField
-										isRequired={member.city.isRequired}
-										onChange={handleChange}
-										value={member.city.value}
-										name="city"
-										label="Ville"
-										autoComplete="off"
-									/>
-								</FormControl>
-								<FormControl width={25}>
-									<TextField
-										isRequired={member.zipcode.isRequired}
-										onChange={handleChange}
-										value={member.zipcode.value}
-										name="zipcode"
-										label="Code postal"
-										autoComplete="off"
-									/>
-								</FormControl>
-								<FormControl width={25}>
-									<TextField
-										isRequired={member.country.isRequired}
-										onChange={handleChange}
-										value={member.country.value}
-										name="country"
-										label="Pays"
-										autoComplete="off"
-									/>
-								</FormControl>
-							</FormPart>
+								
+
+								<Accordeon isExpanded={false} title={"Adresse et localisation"}>
+									<FormPart>
+									<FormControl width={25}>
+										<TextField
+											isRequired={member.street.isRequired}
+											onChange={handleChange}
+											value={member.street.value}
+											name="street"
+											label="Voie"
+											autoComplete="off"
+										/>
+									</FormControl>
+									<FormControl width={25}>
+										<TextField
+											isRequired={member.city.isRequired}
+											onChange={handleChange}
+											value={member.city.value}
+											name="city"
+											label="Ville"
+											autoComplete="off"
+										/>
+									</FormControl>
+									<FormControl width={25}>
+										<TextField
+											isRequired={member.zipcode.isRequired}
+											onChange={handleChange}
+											value={member.zipcode.value}
+											name="zipcode"
+											label="Code postal"
+											autoComplete="off"
+										/>
+									</FormControl>
+									<FormControl width={25}>
+										<TextField
+											isRequired={member.country.isRequired}
+											onChange={handleChange}
+											value={member.country.value}
+											name="country"
+											label="Pays"
+											autoComplete="off"
+										/>
+									</FormControl>
+									</FormPart>
+								</Accordeon>
 						</ModalBody>
 
 						<ModalFooter>
@@ -198,7 +203,7 @@ const MemberModalForm = (props) => {
 export default MemberModalForm
 
 const FormPart = styled.div`
-	display: grid;
+		display: grid;
     grid-template-columns: repeat(2,1fr);
     grid-gap: 15px 25px;
 `

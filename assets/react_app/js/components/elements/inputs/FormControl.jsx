@@ -13,6 +13,7 @@ const FormControl = ({children, width, center = false}) => {
 export default FormControl;
  
 const Container = styled.div`
+	position: relative;
 	display: flex;
 	padding: 10px 30px;
 	min-width: 250px;

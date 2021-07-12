@@ -7,7 +7,9 @@ import CancelButton from '../../../elements/buttons/CancelButton'
 
 import Accordeon from '../../../elements/layout/Accordeon'
 import TextField from '../../../elements/inputs/TextField'
+import Select from '../../../elements/inputs/Select'
 import FormControl from '../../../elements/inputs/FormControl'
+
 
 import AddIcon from '@material-ui/icons/Add'
 import CloseIcon from '@material-ui/icons/Close';
@@ -52,6 +54,10 @@ const MemberModalForm = (props) => {
 		setMember({...member,
 			[currentTarget.name]: {value: currentTarget.value, error: ""}
 		})
+	}
+
+	const handleSelectChange = ({currentTarget}) => {
+		console.log(currentTarget.value)
 	}
 
 	const handleCancel = () => {
@@ -187,6 +193,18 @@ const MemberModalForm = (props) => {
 									</FormControl>
 									</FormPart>
 								</Accordeon>
+								<FormPart>
+									<FormControl width={25}>
+									<Select
+										options={["aaaa", "aafff", "aadf", "bbbb", "defef"]}
+										label="Loge"
+										name="Lodge"
+										isRequired={true}
+										value={5}
+										onChange={handleSelectChange}
+									/>
+									</FormControl>
+								</FormPart>
 						</ModalBody>
 
 						<ModalFooter>
